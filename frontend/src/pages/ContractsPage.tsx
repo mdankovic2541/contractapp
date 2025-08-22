@@ -39,7 +39,7 @@ const ContractsPage: React.FC = () => {
       <ul>
         {filteredContracts.map(contract => (
           <li key={contract.id}>
-            <strong>{contract.title}</strong> - {contract.client_name || contract.client_id} - Start: {contract.start_date} - Duration: {contract.duration_months} months
+            <strong>{contract.title}</strong> - {contract.client?.name || contract.client_id} - Start: {contract.start_date} - Duration: {contract.duration_months} months
             <p>{contract.comments}</p>
           </li>
         ))}

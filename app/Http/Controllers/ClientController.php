@@ -30,26 +30,5 @@ class ClientController extends Controller
     public function show(Client $client)
     {
         return $client->load('contracts');
-    }
-
-    //Update client
-    public function update(Request $request, Client $client)
-    {
-        $data = $request->validate([
-            'name' => 'required|string',
-            'email' => 'nullable|email',
-        ]);
-
-        $client->update($data);
-
-        return response()->json($client);
-    }
-
-    //Delete client
-    public function destroy(Client $client)
-    {
-        $client->delete();
-
-        return response()->json(null, 204);
-    }
+    }   
 }

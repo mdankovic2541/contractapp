@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class ContractController extends Controller
 {
-    // Get all contracts (with or without client id filter)
+    // Get all contracts 
     public function index(Request $request)
     {
         $query = Contract::with('client');
@@ -39,28 +39,5 @@ class ContractController extends Controller
     public function show(Contract $contract)
     {
         return $contract->load('client');
-    }
-
-    // Update contract
-    public function update(Request $request, Contract $contract)
-    {
-        $data = $request->validate([
-            'title' => 'required|string',
-            'start_date' => 'required|date',
-            'duration_months' => 'required|integer|min:1',
-            'comments' => 'nullable|string',
-        ]);
-
-        $contract->update($data);
-
-        return response()->json($contract);
-    }
-
-    // Delete contract
-    public function destroy(Contract $contract)
-    {
-        $contract->delete();
-
-        return response()->json(null, 204);
-    }
+    }   
 }
